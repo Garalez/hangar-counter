@@ -1,0 +1,11 @@
+.underlay {
+  height: fit-content;
+  width: fit-content;
+  background: var(--background);
+  /* background: rgba(255, 255, 255, 0.15); */
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
+  border: 1px solid rgba(217, 200, 200, 0.2);
+}

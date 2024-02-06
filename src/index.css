@@ -1,0 +1,14 @@
+body {
+  background: url(./assets/bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* :root {
+  --background: white;
+  --foreground: black;
+}
+
+[class='dark'] {
+  --background: red;
+  --foreground: white;
+} */
