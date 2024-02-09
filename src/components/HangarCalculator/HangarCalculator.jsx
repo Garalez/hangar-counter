@@ -38,6 +38,7 @@ export const HangarCalculator = () => {
       length: +e.target[1].value || null,
       height: +e.target[2].value || null,
       gateWidth: +e.target[3].value || null,
+      isModalOpen: true,
     });
   };
 
