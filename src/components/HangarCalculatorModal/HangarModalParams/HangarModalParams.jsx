@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { Box, Flex, Text } from '@radix-ui/themes';
+import { Flex, Text } from '@radix-ui/themes';
 import { hangarParams } from '../../../utils/calculations';
-import style from './HangarModalParams.module.css';
 
 export const HangarModalParams = ({ fieldsData }) => {
   const fields = hangarParams(fieldsData);
