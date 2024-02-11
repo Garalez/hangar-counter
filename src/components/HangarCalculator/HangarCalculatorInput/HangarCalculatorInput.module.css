@@ -1,0 +1,4 @@
+input {
+  height: calc(3.5rem + 2px);
+  width: 100%;
+}

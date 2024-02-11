@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Grid, Heading } from '@radix-ui/themes';
+import * as Form from '@radix-ui/react-form';
 import HangarCalculatorInput from './HangarCalculatorInput';
 import HangarCalculatorRB from './HangarCalculatorRB';
 import style from './HangarCalculator.module.css';
@@ -9,17 +10,39 @@ export const HangarCalculator = () => {
   const { fieldsData, setFieldsData } = useContext(FieldsDataContext);
   console.log({ fieldsData });
 
-  const inputPlaceholders = [
-    'Ширина в м',
-    'Длина в м',
-    'Высота под ферму в м',
-    'Ширина ворот (фронтон) в м',
+  // const inputPlaceholders = [
+  //   'Ширина в м',
+  //   'Длина в м',
+  //   'Высота под ферму в м',
+  //   'Ширина ворот (фронтон) в м',
+  // ];
+  const formInputs = [
+    {
+      name: 'Ширина в м',
+      value: fieldsData.width || '',
+      error: 'Введите ширину',
+    },
+    {
+      name: 'Длина в м',
+      value: fieldsData.length || '',
+      error: 'Введите длину',
+    },
+    {
+      name: 'Высота под ферму в м',
+      value: fieldsData.height || '',
+      error: 'Введите высоту',
+    },
+    {
+      name: 'Ширина ворот (фронтон) в м',
+      value: fieldsData.gateWidth || '',
+      error: 'Введите ширину ворот',
+    },
   ];
 
   const radioButtons = [
     {
       name: 'columnStep',
-      label:  'Шаг торцевых',
+      label: 'Шаг торцевых',
       options: [3, 4],
     },
     {
@@ -38,26 +61,23 @@ export const HangarCalculator = () => {
       length: +e.target[1].value || null,
       height: +e.target[2].value || null,
       gateWidth: +e.target[3].value || null,
+      isModalOpen: true,
     });
   };
 
-  return (
-    <form onSubmit={handleFormSubmit}>
-      <Box className={style.underlay}>
-        <Flex direction='column' gap='5' p='7' width='100%'>
-          <Heading size='9' weight='bold' mb='4'>
-            Введите размеры ангар
-          </Heading>
+  return fieldsData.isModalOpen ? null : (
+    <Box className={style.underlay}>
+      <Heading size='8' weight='bold' mb='4'>
+        Введите размеры ангара
+      </Heading>
+      <Form.Root onSubmit={handleFormSubmit}>
+        <Flex direction='column' gap='3'>
           {/* <Grid columns='2' gap='4'> */}
-          {inputPlaceholders.map((placeholder, index) => (
-            <HangarCalculatorInput key={index} placeholder={placeholder} />
+          {formInputs.map((input, index) => (
+            <HangarCalculatorInput key={index} input={input} />
           ))}
           {/* </Grid> */}
-          <Flex
-            justify='between'
-            direction='column'
-            align='center'
-            width='100%'>
+          <Flex justify='between' direction='column' align='center' width='100%'>
             {radioButtons.map((radioButton, index) => (
               <Flex direction='column' key={index} width='100%' mb='3'>
                 <HangarCalculatorRB
@@ -76,7 +96,7 @@ export const HangarCalculator = () => {
             </Button>
           </Flex>
         </Flex>
-      </Box>
-    </form>
+      </Form.Root>
+    </Box>
   );
 };

@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Flex, Grid, Text } from '@radix-ui/themes';
 import PropTypes from 'prop-types';
 import style from './HangarCalculatorRB.module.css';
 
 export const HangarCalculatorRB = ({ name, label, options, fieldsData, setFieldsData }) => {
   const [selectedOption, setSelectedOption] = useState(null);
-  // console.log('selectedOption: ', selectedOption);
+  // console.log('selectedOption: ', selectedOption, fieldsData, name, label);
+  useEffect(() => {
+    setSelectedOption(fieldsData[name] || null);
+  }, [fieldsData]);
 
   const handleButtonClick = (option) => {
     setSelectedOption(option);

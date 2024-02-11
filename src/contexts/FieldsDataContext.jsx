@@ -11,6 +11,7 @@ export const FieldsDataProvider = ({ children }) => {
     gateWidth: null,
     columnStep: null,
     gateCount: null,
+    isModalOpen: false,
   };
 
   const [fieldsData, setFieldsData] = useState(initialFieldsData);

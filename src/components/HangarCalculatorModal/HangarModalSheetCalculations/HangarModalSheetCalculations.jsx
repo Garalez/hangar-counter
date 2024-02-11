@@ -1,23 +1,10 @@
 import { Table } from '@radix-ui/themes';
+import PropTypes from 'prop-types';
+import { hangarSheetCalculations } from '../../../utils/calculations';
 
-export const HangarModalSheetCalculations = () => {
-  const pipeCalculations = [
-    {
-      name: 'Стены',
-      count: 4,
-      meterage: 12,
-    },
-    {
-      name: 'Фронтоны',
-      count: 4,
-      meterage: 12,
-    },
-    {
-      name: 'Крыша',
-      count: 4,
-      meterage: 12,
-    },
-  ];
+export const HangarModalSheetCalculations = ({fieldsData}) => {
+  const sheetCalculations = hangarSheetCalculations(fieldsData);
+
   return (
     <Table.Root variant='surface'>
       <Table.Header>
@@ -29,15 +16,19 @@ export const HangarModalSheetCalculations = () => {
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {pipeCalculations.map((calculation, index) => (
+        {sheetCalculations.map((calculation, index) => (
           <Table.Row key={index}>
             <Table.RowHeaderCell align='center'>
               {calculation.name}
             </Table.RowHeaderCell>
-            <Table.Cell align='center'>{`${calculation.meterage} м`}</Table.Cell>
+            <Table.Cell align='center'>{calculation.meterage}</Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
     </Table.Root>
   );
+};
+
+HangarModalSheetCalculations.propTypes = {
+  fieldsData: PropTypes.object,
 };
