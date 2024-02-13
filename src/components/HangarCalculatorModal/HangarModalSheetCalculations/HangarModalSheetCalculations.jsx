@@ -6,7 +6,7 @@ export const HangarModalSheetCalculations = ({fieldsData}) => {
   const sheetCalculations = hangarSheetCalculations(fieldsData);
 
   return (
-    <Table.Root variant='surface'>
+    <Table.Root variant='surface' style={{background: 'rebeccapurple'}}>
       <Table.Header>
         <Table.Row>
           <Table.ColumnHeaderCell align='center'>

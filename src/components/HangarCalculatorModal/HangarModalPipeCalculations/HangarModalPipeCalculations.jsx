@@ -13,7 +13,7 @@ export const HangarModalPipeCalculations = ({ fieldsData }) => {
   }
 
   return (
-    <Table.Root variant='surface'>
+    <Table.Root variant='surface' style={{ background: 'purple' }}>
       <Table.Header>
         <Table.Row>
           <Table.ColumnHeaderCell align='center'>#</Table.ColumnHeaderCell>
